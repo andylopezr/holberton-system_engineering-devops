@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -options -la
+ls -n -la
