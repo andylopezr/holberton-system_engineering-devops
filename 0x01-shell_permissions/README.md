@@ -1,0 +1,1 @@
+**Files containing scripts for tasks about shell permissions.**
