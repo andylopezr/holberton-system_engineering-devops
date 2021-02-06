@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# gets information about file "holbertonschool"
+#gets information about file "holbertonschool"
 
-filename=holbertonschool
+filename="holbertonschool"
 if [ -e $filename ]
 then
     echo "$filename file exists"
