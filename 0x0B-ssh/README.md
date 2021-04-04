@@ -1,5 +1,4 @@
 # 0x0B. SSH
-<img src="https://www.howtogeek.com/wp-content/uploads/2019/03/img_5c94224b1cfd7.png">
 An introductory project on:
 * What is a server?
 * Where do servers usually live?
