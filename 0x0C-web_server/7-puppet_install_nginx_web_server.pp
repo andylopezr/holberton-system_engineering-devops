@@ -1,21 +1,26 @@
 # Installs nginx web server using puppet
-
-package { 'nginx':
-  ensure => installed,
+exec { 'update apt-get':
+  command => 'sudo apt-get update -y',
+  path    => ['/usr/bin', '/bin'],
+  returns =>[0, 1],
 }
 
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+package { 'install nginx web server':
+  ensure  => 'present',
+  name    => 'nginx',
+  require => Exec['update apt-get'],
 }
 
-file_line { '/etc/nginx/sites-available/default':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'listen 80 default_server;',
-  line   => 'rewrite ^/redirect_me https://www.youtube.com/ permanent;',
+exec { 'set content web server':
+  command => 'echo "Holberton School" | sudo tee /var/www/html/index.html',
+  path    => ['/usr/bin', '/bin'],
+  returns =>[0, 1],
+  require => Package['install nginx web server'],
 }
 
-file { '/var/www/html/index.nginx-debian.html':
-  content => 'Holberton School',
+exec { 'start nginx web server':
+  command => 'sudo service nginx start',
+  path    => ['/usr/bin', '/bin'],
+  returns =>[0, 1],
+  require => Exec['set content web server'],
 }
