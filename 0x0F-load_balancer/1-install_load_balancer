@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Installs haproxy
+# Installs and setups HAproxy
 requirements="\
 frontend load_balancer
     bind *:80
     mode http
-    default_backend foo
+    default_backend web_servers
 
-backend foo
+backend web_servers
     balance roundrobin
-    server foo1 35.190.196.147 check
-    server foo2 34.75.12.144 check
+    server andy-01 35.190.196.147:80
+    server andy-02 34.75.12.144:80
 "
 apt-get -y install software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.0
