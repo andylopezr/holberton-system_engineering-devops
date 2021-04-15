@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Configures Nginx to listen on port 80 without killing the process
+
+pkill -1 -f "/usr/sbin/nginx"
